@@ -10,23 +10,43 @@
             width: 100px;
             height: 100px;
             border: 2px solid black;
+            
         }
-        #block1{
-            left: 8.2%;
+        #block1{  
+            top: 19%;
+            left: 40.2%;
         }
-        #block2{
-            left: 15.8%;
+        #block2{  top: 19%;
+            left: 47.8%;
         }
         #block4{
-            top: 16.8%;
+            top: 34.8%;
+            left: 32.6%;
         }
         #block5{
-            top: 16.8%;
-            left: 8.2%;
+            top: 34.8%;
+            left: 47.8%;
         }
         #block6{
-            top: 16.8%;
-            left: 15.8%;
+            top: 34.8%;
+            left: 40.2%;
+        }
+        #block7{
+            top: 50.7%;
+            left: 32.6%;
+        }
+        #block8{
+            top: 50.7%;
+            left: 47.8%;
+        }
+        #block9{
+            top: 50.7%;
+            left: 40.2%;
+        }
+        #block3{
+            top: 19%;
+            position: absolute;
+            left: 32.6%;
         }
         #mole{
             display: none;
@@ -38,39 +58,180 @@
             top: 40%;
             font-size: 50px;
         }
+        #modal{
+            position: absolute;
+            width: 500px;
+            height: 400px;
+            border: 5px solid black;
+            left: 27%;
+            top: 20%;
+            background-color: white;
+            box-shadow: 5px 5px 22px 22px rgb(110, 104, 104);
+           
+        }
+        #button{
+            position: absolute;
+            top: 42%;
+            left: 36%;
+            width: 150px;
+            height: 80px;
+            border: 3px solid black;
+            border-radius: 10px;
+            background-color: rgb(89, 145, 163);
+            color: white;
+            font-size: 25px;
+        }
+        #button:hover{
+            cursor: pointer;
+            box-shadow: 3px 3px 15px 15px lightblue;
+        }
+        #info{
+            position: absolute;
+            left: 4%;
+            right: 4%;
+            top: 8%;
+            font-size: 20px;
+            font-family: cursive;
+            color: rgb(15, 131, 160);
+        }
+        #time{
+           position: absolute; 
+           font-size: 40px;
+           top: 60%;
+        }
+        #options{
+            right: 0;
+            top: 45%;
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            background-color: rgb(121, 15, 103);
+            color: white;
+            font-size: 50px;
+            border: 2px solid white;
+        }
+        #options:hover{
+            cursor: grab;
+          box-shadow: 3px 3px 20px 20px  rgb(223, 216, 216);
+        }
+        #maindiv{
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 55%;
+            width: 140px;
+            height: 50px;
+            border: 2px solid black;
+        }
+#span{
+    position: absolute;
+    left: 9%;
+    top: 25%;
+}
+#inc{
+    position: absolute;
+    left: 132%;
+}
+#dec{
+    position: absolute;
+    left: 232%;
+}
+#crossit{
+    position: absolute;
+    right: 3%;
+    top: 2%;
+}
+#crossit:hover{
+   cursor: pointer;
+   color: red;
+}
+#open{
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    background-color: rgb(60, 141, 168);
+    color: white;
+    border: none;
+}
+#open:hover{
+    cursor: pointer;
+    box-shadow: 3px 3px 20px 20px rgb(89, 164, 189);
+}
     </style>
 </head>
 <body>
-    <div>
+    <button type="button" id="open" onclick="openit()">Start?</button>
+    <div id="maindiv">
+        <div id="span">
+            <span> speed <button id="inc" ondblclick="removeit()" onclick="inc()">+</button><button id="dec" onclick="dec()">-</button></span>
+        </div>
+    </div>
+    
+    <button type="button"  id="options" onclick="myfunction()"><</button>
+      <img width="100px" height="100px" id="mole" class="mimg rms_img" style="color: rgb(2, 140, 64);" height="180" width="132" alt="Image result for mole game sprite" id="emb1434CA6CB" src="data:image/jpeg;base64,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" data-thhnrepbd="1" data-bm="141">
+    <div id="contain">
           <p id="score">score : 0</p>
-       <img width="100px" height="100px" id="mole" class="mimg rms_img" style="color: rgb(2, 140, 64);" height="180" width="132" alt="Image result for mole game sprite" id="emb1434CA6CB" src="data:image/jpeg;base64,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" data-thhnrepbd="1" data-bm="141">
+          <span id="time">Time - 20(s)</span>
         <div class="holes" id="block1"></div>
         <div class="holes" id="block2"></div>
         <div class="holes" id="block3"></div>
         <div class="holes" id="block4"></div>
         <div class="holes" id="block5"></div>
         <div class="holes" id="block6"></div>
+        <div class="holes" id="block7"></div>
+        <div  class="holes" id="block8"></div>
+        <div class="holes" id="block9"></div>
+    </div>
+    <div id="modal">
+        <span id="crossit" onclick="remove()">x</span>
+        <span id="info">Hey get as many moles as possible in 20 seconds !!!! the minimum is 10!! enjoy the game and to start the game just click on the button down below!!</span>       
+        <div><button type="button" onclick="start()" id="button">Start</button></div>
     </div>
 </body>
 <script>
+         let mole = document.getElementById("mole");
+         let crossitout = document.getElementById("crossit");
+        let modal = document.getElementById("modal");
+      let time = 20;
+      let maindiv = document.getElementById("maindiv");
+      let info = document.getElementById("info")
+      let button = document.getElementById("button");
+      let contain = document.getElementById("contain");
+      let timeshow = document.getElementById("time");
     let hole1 = document.getElementById("block1");
     let hole2 = document.getElementById("block2");
     let hole3 = document.getElementById("block3");
     let hole4 = document.getElementById("block4");
     let hole5 = document.getElementById("block5");
     let hole6 = document.getElementById("block6");
-    let mole = document.getElementById("mole");
+    let hole7 = document.getElementById("block7");
+    let hole8 = document.getElementById("block8");
+    let hole9 = document.getElementById("block9");
     let score = document.getElementById("score");
     let scorecount = 0;
+    let respawn = 380;
+function inc(){
+    respawn -= 20;
+}
+function dec(){
+    respawn += 20;
+}
 
     mole.addEventListener("click" , function(){
       scorecount++;
       score.innerHTML = "score : "+scorecount;
   })
-
+  
+   function myfunction(){
+       //alert("working");
+       maindiv.style.display = "block";
+   }
     function gorandom(){
-    let holes = ["1", "2" , "3" , "4" , "5" , "6"];
-    let random = Math.floor(Math.random()*6);
+    let holes = ["1", "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9"];
+    let random = Math.floor(Math.random()*9);
    mole.style.display = "block";
    if(random === 1){//alert("1"); 
    hole1.append(mole)};
@@ -84,13 +245,54 @@
    hole5.append(mole)};
    if(random === 6){//alert("6");
    hole6.append(mole)};
+   if(random === 7){//alert("6");
+   hole7.append(mole)};
+   if(random === 8){//alert("6");
+   hole8.append(mole)};
+   if(random === 9){//alert("6");
+   hole9.append(mole)};
+    
     }
-    window.onload = function(){  
-        
+    function remove(){
+        modal.style.display = "none";
+    }
+   function removeit(){
+       maindiv.style.display = "none";
+   }
+    
+   function start(){  
+    modal.style.display = "none"
+    let timedown = setInterval(function(){
+     time -= 1;
+     timeshow.innerHTML = "Time - " + time + "(s)";
+     if(time === 0){
+        modal.style.display = "block";
+    button.innerHTML = "Restart";
+    button.addEventListener("click" , function(){
+        window.location.reload();
+    })
+        time = 20;
+         clearInterval(timedown)
+        if(scorecount<10){
+            info.innerHTML = "Hmmm... looks like you didn't get the desired score. Never mind !! we learn from our mistakes and besides , practice makes a person perfect!!!!"
+        setTimeout(function(){alert("you lose!!!" , 1000) ; 
+        })}};
+     if( scorecount === 10||scorecount>10){
+         modal.style.display = "block";
+         crossitout.style.display = "none";
+          //  alert("you win!!!!!!!!!!");
+            info.innerHTML = "Yeee!!! Great  , you won this game !! that's so cool(personally I have never got 10) . If you want to retry click on the button below ";
+            button.innerHTML = "Restart";
+            button.addEventListener("click" , function(){window.location.reload()});
+        }
+    } , 1000)
      let generate = setInterval(function(){
         gorandom();
-     } , 280);
+     } , respawn);
         
         };
+function openit(){
+   modal.style.display = "block";
+} 
 </script>
 </html>
