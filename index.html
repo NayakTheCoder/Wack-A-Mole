@@ -120,7 +120,7 @@
             right: 2%;
             top: 55%;
             width: 140px;
-            height: 80px;
+            height: 130px;
             border: 5px solid black;
             box-shadow: 3px 3px 20px 20px rgb(205, 212, 214);
         }
@@ -171,13 +171,21 @@
     top: 154%;
     left: 235% ;
 }
-
+#help{
+position: absolute;
+top: 340%;  
+cursor: pointer;
+}
+#help:hover{
+    color: red;
+}
     </style>
 </head>
 <body>
     <button type="button" id="open" onclick="openit()">Start?</button>
     <div id="maindiv">
         <div id="span" ondblclick="removeit()">
+            <span id="help" onclick="help()">Help??</span>
             <span style="position: absolute; top: 154%;">Time - </span><button type="button" onclick="timeup()" id="timeup">+</button><button type="button" onclick="timegodown()" id="timedown">-</button>
             <span> speed <button id="inc" onclick="inc()">+</button><button id="dec" onclick="dec()">-</button></span>
         </div>
@@ -227,6 +235,17 @@
     let score = document.getElementById("score");
     let scorecount = 0;
     let respawn = 380;
+
+    function help(){
+        modal.style.display = "block";
+        info.innerHTML = "sup!! don't know how to start the game ? well , when the document loads the startscreen(by default) will open at the top-right the is a start button you can use it start the game . on the left of the screen their is a button of options  , you can use it to change the settings of the game !!! in the options you can change the time and speed settings  , then you can enjoy your game!!!!!!!";
+        button.style.display = "none";
+        crossitout.style.display = "block";
+        crossitout.addEventListener("click", function(){
+            info.innerHTML=  "Hey get as many moles as possible in 20 seconds !!!! the minimum is 10!! enjoy the game and to start the game just click on the button down below!!"
+            button.style.display = "block"
+        })
+    }
 function inc(){
     respawn -= 20;
 }
